@@ -3,880 +3,717 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DigitalCleanPro - Professional Social Media Cleanup Services</title>
-    <meta name="description" content="Professional social media cleanup services to help you manage your online presence and protect your reputation.">
-    
+    <title>CleanSlate - Professional Social Media Cleanup</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
             color: #333;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #667eea;
-            text-decoration: none;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: #667eea;
-        }
 
-        /* Page Management */
         .page {
             display: none;
             min-height: 100vh;
-            padding-top: 100px;
+            padding: 40px 0;
         }
-        
+
         .page.active {
             display: block;
         }
-        
-        /* Home Page Styles */
+
+        /* Landing Page Styles */
         .hero {
-            padding: 120px 0 80px;
             text-align: center;
+            padding: 100px 0;
             color: white;
         }
-        
+
         .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 1s ease;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        
+
         .hero p {
             font-size: 1.5rem;
-            margin-bottom: 3rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-bottom: 40px;
             opacity: 0.9;
-            animation: fadeInUp 1s ease 0.2s both;
         }
-        
-        .cta-button {
-            display: inline-block;
-            background: #ff6b6b;
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 80px 0;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
             color: white;
-            padding: 20px 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 1.3rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
-            animation: fadeInUp 1s ease 0.4s both;
+            font-size: 1.1rem;
             border: none;
             cursor: pointer;
-        }
-        
-        .cta-button:hover {
-            background: #ff5252;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5);
-        }
-        
-        .benefits-section {
-            background: white;
-            margin: 60px 0;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            padding: 80px 0;
-        }
-        
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-        
-        .benefit-card {
-            text-align: center;
-            padding: 2rem;
-        }
-        
-        .benefit-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-        
-        .benefit-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-        
-        .benefit-card p {
-            font-size: 1.1rem;
-            color: #666;
-            line-height: 1.7;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(238, 90, 36, 0.3);
         }
 
-        /* Step Pages Styles */
-        .step-container {
-            background: white;
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(238, 90, 36, 0.4);
+        }
+
+        /* Form Pages Styles */
+        .form-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
             border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            padding: 60px;
-            margin: 40px 0;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            padding: 50px;
+            max-width: 600px;
+            margin: 50px auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
         }
-        
-        .step-header {
+
+        .form-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 40px;
         }
-        
-        .step-number {
-            background: #667eea;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto 1rem;
-        }
-        
-        .step-title {
-            font-size: 2.5rem;
+
+        .form-header h2 {
             color: #333;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 10px;
         }
-        
-        .step-description {
-            font-size: 1.2rem;
+
+        .form-header p {
             color: #666;
-            margin-bottom: 2rem;
+            font-size: 1.1rem;
         }
-        
-        /* Platform Selection */
+
         .platform-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
         }
-        
+
         .platform-card {
-            border: 3px solid #f0f0f0;
+            background: white;
+            border: 2px solid #e1e5e9;
             border-radius: 15px;
-            padding: 2rem;
+            padding: 20px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            background: white;
         }
-        
+
         .platform-card:hover {
             border-color: #667eea;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
         }
-        
+
         .platform-card.selected {
-            border-color: #ff6b6b;
-            background: #fff5f5;
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
         }
-        
+
         .platform-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 10px;
         }
-        
-        .platform-name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #333;
-        }
-        
-        /* Login Form Styles */
-        .login-forms {
-            margin: 2rem 0;
-        }
-        
-        .login-form {
-            display: none;
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            border-left: 5px solid #667eea;
-        }
-        
-        .login-form.active {
-            display: block;
-        }
-        
+
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 25px;
         }
-        
+
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 8px;
             font-weight: 600;
             color: #333;
         }
-        
+
         .form-group input {
             width: 100%;
-            padding: 15px;
-            border: 2px solid #e9ecef;
+            padding: 12px 15px;
+            border: 2px solid #e1e5e9;
             border-radius: 10px;
             font-size: 1rem;
             transition: border-color 0.3s ease;
         }
-        
+
         .form-group input:focus {
             outline: none;
             border-color: #667eea;
         }
-        
-        .security-notice {
-            background: #e8f5e8;
-            border: 1px solid #c3e6c3;
-            border-radius: 10px;
-            padding: 1rem;
-            margin: 1rem 0;
-            font-size: 0.9rem;
-            color: #2d5a2d;
-        }
-        
-        /* Service Selection */
-        .service-tiers {
-            margin: 2rem 0;
-        }
-        
+
         .tier-card {
-            border: 3px solid #f0f0f0;
+            border: 2px solid #e1e5e9;
             border-radius: 15px;
-            padding: 2.5rem;
-            margin-bottom: 1.5rem;
+            padding: 25px;
+            margin-bottom: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
-            position: relative;
         }
-        
+
         .tier-card:hover {
             border-color: #667eea;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
-        
+
         .tier-card.selected {
-            border-color: #ff6b6b;
-            background: #fff5f5;
+            border-color: #667eea;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
         }
-        
-        .tier-card.popular::before {
-            content: "MOST POPULAR";
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #ff6b6b;
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
+
+        .tier-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
         }
-        
+
         .tier-name {
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 1.3rem;
+            font-weight: 600;
             color: #333;
-            margin-bottom: 0.5rem;
         }
-        
+
         .tier-price {
-            font-size: 2.5rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: #667eea;
-            margin-bottom: 1rem;
         }
-        
+
         .tier-features {
             list-style: none;
+            color: #666;
         }
-        
+
         .tier-features li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 8px;
+            padding-left: 20px;
             position: relative;
-            padding-left: 2rem;
         }
-        
-        .tier-features li::before {
+
+        .tier-features li:before {
             content: "✓";
             position: absolute;
             left: 0;
             color: #4CAF50;
             font-weight: bold;
         }
-        
-        /* Navigation Buttons */
-        .step-navigation {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 3rem;
-            gap: 1rem;
-        }
-        
-        .nav-button {
-            padding: 15px 30px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-width: 150px;
-        }
-        
-        .nav-button.primary {
-            background: #667eea;
-            color: white;
-        }
-        
-        .nav-button.primary:hover {
-            background: #5a6fd8;
-            transform: translateY(-2px);
-        }
-        
-        .nav-button.secondary {
-            background: #f8f9fa;
-            color: #333;
-            border: 2px solid #e9ecef;
-        }
-        
-        .nav-button.secondary:hover {
-            background: #e9ecef;
-        }
-        
-        .nav-button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
-        /* Terms Checkbox */
-        .terms-section {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin: 2rem 0;
-        }
-        
+
         .checkbox-group {
             display: flex;
-            align-items: flex-start;
-            gap: 1rem;
+            align-items: center;
+            margin: 30px 0;
         }
-        
+
         .checkbox-group input[type="checkbox"] {
-            margin-top: 0.25rem;
-            transform: scale(1.2);
+            width: auto;
+            margin-right: 10px;
         }
-        
-        .checkbox-group label {
-            font-size: 1rem;
-            line-height: 1.5;
-            color: #333;
+
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
         }
-        
-        .checkbox-group a {
-            color: #667eea;
-            text-decoration: underline;
+
+        .btn-secondary {
+            background: #6c757d;
+            box-shadow: 0 10px 30px rgba(108, 117, 125, 0.3);
         }
-        
-        /* Payment Page */
+
+        .btn-secondary:hover {
+            box-shadow: 0 15px 40px rgba(108, 117, 125, 0.4);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e1e5e9;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
         .payment-summary {
             background: #f8f9fa;
             border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
+            padding: 25px;
+            margin-bottom: 30px;
         }
-        
-        .summary-item {
+
+        .summary-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #e9ecef;
+            margin-bottom: 10px;
         }
-        
-        .summary-item:last-child {
-            border-bottom: none;
+
+        .summary-total {
+            border-top: 2px solid #e1e5e9;
+            padding-top: 15px;
+            margin-top: 15px;
             font-weight: 700;
             font-size: 1.2rem;
         }
-        
-        .payment-methods {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        
-        .payment-method {
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            padding: 1.5rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .payment-method:hover {
-            border-color: #667eea;
-        }
-        
-        .payment-method.selected {
-            border-color: #ff6b6b;
-            background: #fff5f5;
-        }
-        
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 2rem;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
+
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero p { font-size: 1.2rem; }
-            .step-container { padding: 30px 20px; }
-            .platform-grid { grid-template-columns: 1fr 1fr; }
-            .benefits-grid { grid-template-columns: 1fr; }
-            .step-navigation { flex-direction: column; }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <a href="#" class="logo" onclick="showPage('home')">DigitalCleanPro</a>
-            <ul class="nav-links">
-                <li><a href="#" onclick="showPage('home')">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- HOME PAGE -->
-    <div id="home" class="page active">
-        <section class="hero">
-            <div class="container">
-                <h1>Clean Your Digital Past</h1>
-                <p>Professional social media cleanup services to protect your reputation, secure job opportunities, and build a professional online presence.</p>
-                <button class="cta-button" onclick="startProcess()">Get Started Now</button>
-            </div>
-        </section>
-
+    <!-- Landing Page -->
+    <div id="landing" class="page active">
         <div class="container">
-            <section class="benefits-section">
-                <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: #333;">Why Choose Our Service?</h2>
-                <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 2rem;">Professional, confidential, and comprehensive social media cleanup</p>
-                
-                <div class="benefits-grid">
-                    <div class="benefit-card">
-                        <span class="benefit-icon">🛡️</span>
-                        <h3>100% Confidential</h3>
-                        <p>Your privacy is our priority. All work is done under strict confidentiality agreements with immediate credential deletion after completion.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <span class="benefit-icon">⚡</span>
-                        <h3>Fast Results</h3>
-                        <p>Most cleanups completed within 3-7 business days. Get your digital reputation cleaned quickly and professionally.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <span class="benefit-icon">💼</span>
-                        <h3>Professional Team</h3>
-                        <p>Experienced specialists in digital reputation management with years of social media platform expertise.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <span class="benefit-icon">🎯</span>
-                        <h3>Comprehensive Coverage</h3>
-                        <p>We handle all major platforms: Facebook, Instagram, Twitter, LinkedIn, TikTok, Snapchat, and more.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <span class="benefit-icon">📊</span>
-                        <h3>Detailed Reporting</h3>
-                        <p>Receive comprehensive reports of all actions taken, content removed, and privacy settings optimized.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <span class="benefit-icon">🔒</span>
-                        <h3>Privacy Optimization</h3>
-                        <p>Beyond cleanup, we optimize your privacy settings to prevent future issues and protect your digital footprint.</p>
-                    </div>
+            <div class="hero">
+                <h1>🧹 CleanSlate</h1>
+                <p>Professional Social Media Cleanup Services</p>
+                <button class="btn" onclick="showPage('platforms')">Get Started</button>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🗑️</div>
+                    <h3>Content Cleanup</h3>
+                    <p>Remove embarrassing posts, photos, and comments that no longer represent who you are today.</p>
                 </div>
-            </section>
+                
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Privacy Protection</h3>
+                    <p>Secure your personal information and adjust privacy settings across all platforms.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Profile Optimization</h3>
+                    <p>Enhance your digital presence with professional profile optimization and branding.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Analytics & Insights</h3>
+                    <p>Get detailed reports on your cleaned profiles and recommendations for maintenance.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🔄</div>
+                    <h3>Ongoing Monitoring</h3>
+                    <p>Continuous monitoring and maintenance to keep your social presence clean and professional.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">💼</div>
+                    <h3>Career Protection</h3>
+                    <p>Protect your professional reputation with employer-safe social media profiles.</p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- STEP 1: PLATFORM SELECTION -->
-    <div id="platform-selection" class="page">
+    <!-- Platform Selection Page -->
+    <div id="platforms" class="page">
         <div class="container">
-            <div class="step-container">
-                <div class="step-header">
-                    <div class="step-number">1</div>
-                    <h2 class="step-title">Select Your Platforms</h2>
-                    <p class="step-description">Choose which social media platforms you'd like us to clean up</p>
+            <div class="form-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 25%"></div>
+                </div>
+                
+                <div class="form-header">
+                    <h2>Select Platforms</h2>
+                    <p>Choose which social media platforms you'd like to clean up</p>
                 </div>
                 
                 <div class="platform-grid">
-                    <div class="platform-card" data-platform="facebook">
+                    <div class="platform-card" onclick="togglePlatform(this, 'facebook')">
                         <div class="platform-icon">📘</div>
-                        <div class="platform-name">Facebook</div>
+                        <div>Facebook</div>
                     </div>
-                    <div class="platform-card" data-platform="instagram">
-                        <div class="platform-icon">📷</div>
-                        <div class="platform-name">Instagram</div>
-                    </div>
-                    <div class="platform-card" data-platform="twitter">
+                    
+                    <div class="platform-card" onclick="togglePlatform(this, 'twitter')">
                         <div class="platform-icon">🐦</div>
-                        <div class="platform-name">Twitter/X</div>
+                        <div>Twitter/X</div>
                     </div>
-                    <div class="platform-card" data-platform="linkedin">
+                    
+                    <div class="platform-card" onclick="togglePlatform(this, 'instagram')">
+                        <div class="platform-icon">📷</div>
+                        <div>Instagram</div>
+                    </div>
+                    
+                    <div class="platform-card" onclick="togglePlatform(this, 'linkedin')">
                         <div class="platform-icon">💼</div>
-                        <div class="platform-name">LinkedIn</div>
+                        <div>LinkedIn</div>
                     </div>
-                    <div class="platform-card" data-platform="tiktok">
+                    
+                    <div class="platform-card" onclick="togglePlatform(this, 'tiktok')">
                         <div class="platform-icon">🎵</div>
-                        <div class="platform-name">TikTok</div>
+                        <div>TikTok</div>
                     </div>
-                    <div class="platform-card" data-platform="snapchat">
+                    
+                    <div class="platform-card" onclick="togglePlatform(this, 'snapchat')">
                         <div class="platform-icon">👻</div>
-                        <div class="platform-name">Snapchat</div>
-                    </div>
-                    <div class="platform-card" data-platform="youtube">
-                        <div class="platform-icon">📺</div>
-                        <div class="platform-name">YouTube</div>
-                    </div>
-                    <div class="platform-card" data-platform="pinterest">
-                        <div class="platform-icon">📌</div>
-                        <div class="platform-name">Pinterest</div>
+                        <div>Snapchat</div>
                     </div>
                 </div>
                 
-                <div class="step-navigation">
-                    <button class="nav-button secondary" onclick="showPage('home')">Back</button>
-                    <button class="nav-button primary" id="platform-next" onclick="nextStep('login-details')" disabled>Next Step</button>
+                <div class="form-navigation">
+                    <button class="btn btn-secondary" onclick="showPage('landing')">Back</button>
+                    <button class="btn" onclick="goToLogin()">Next</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- STEP 2: LOGIN DETAILS -->
-    <div id="login-details" class="page">
+    <!-- Login Details Page -->
+    <div id="login" class="page">
         <div class="container">
-            <div class="step-container">
-                <div class="step-header">
-                    <div class="step-number">2</div>
-                    <h2 class="step-title">Account Access</h2>
-                    <p class="step-description">Provide login details for your selected platforms</p>
+            <div class="form-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 50%"></div>
                 </div>
                 
-                <div class="security-notice">
-                    <strong>🔒 Security Notice:</strong> Your login credentials are encrypted and used only for cleanup services. All credentials are permanently deleted within 24 hours of service completion.
+                <div class="form-header">
+                    <h2>Account Details</h2>
+                    <p>Provide login credentials for your selected platforms</p>
                 </div>
                 
-                <div class="login-forms" id="login-forms">
+                <div id="loginForms">
                     <!-- Login forms will be dynamically generated here -->
                 </div>
                 
-                <div class="step-navigation">
-                    <button class="nav-button secondary" onclick="prevStep('platform-selection')">Back</button>
-                    <button class="nav-button primary" id="login-next" onclick="nextStep('service-selection')" disabled>Next Step</button>
+                <div class="form-navigation">
+                    <button class="btn btn-secondary" onclick="showPage('platforms')">Back</button>
+                    <button class="btn" onclick="showPage('services')">Next</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- STEP 3: SERVICE SELECTION -->
-    <div id="service-selection" class="page">
+    <!-- Service Selection Page -->
+    <div id="services" class="page">
         <div class="container">
-            <div class="step-container">
-                <div class="step-header">
-                    <div class="step-number">3</div>
-                    <h2 class="step-title">Choose Your Service</h2>
-                    <p class="step-description">Select the cleanup package that best fits your needs</p>
+            <div class="form-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 75%"></div>
                 </div>
                 
-                <div class="service-tiers">
-                    <div class="tier-card" data-tier="basic">
-                        <div class="tier-name">Basic Clean</div>
+                <div class="form-header">
+                    <h2>Choose Your Service Tier</h2>
+                    <p>Select the level of service that best fits your needs</p>
+                </div>
+                
+                <div class="tier-card" onclick="selectTier(this, 'basic', 99)">
+                    <div class="tier-header">
+                        <div class="tier-name">Basic Cleanup</div>
+                        <div class="tier-price">$99</div>
+                    </div>
+                    <ul class="tier-features">
+                        <li>Remove up to 50 posts/photos</li>
+                        <li>Basic privacy settings adjustment</li>
+                        <li>Profile optimization</li>
+                        <li>One-time cleanup report</li>
+                    </ul>
+                </div>
+                
+                <div class="tier-card" onclick="selectTier(this, 'professional', 199)">
+                    <div class="tier-header">
+                        <div class="tier-name">Professional</div>
                         <div class="tier-price">$199</div>
-                        <ul class="tier-features">
-                            <li>Up to 3 platforms</li>
-                            <li>Content review & removal</li>
-                            <li>Basic privacy settings</li>
-                            <li>Written summary report</li>
-                            <li>7-day completion</li>
-                        </ul>
                     </div>
-                    
-                    <div class="tier-card popular" data-tier="professional">
-                        <div class="tier-name">Professional Clean</div>
-                        <div class="tier-price">$399</div>
-                        <ul class="tier-features">
-                            <li>Up to 6 platforms</li>
-                            <li>Comprehensive cleanup</li>
-                            <li>Advanced privacy optimization</li>
-                            <li>Profile enhancement</li>
-                            <li>Detailed analytics report</li>
-                            <li>5-day completion</li>
-                            <li>Email support</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tier-card" data-tier="executive">
-                        <div class="tier-name">Executive Clean</div>
-                        <div class="tier-price">$699</div>
-                        <ul class="tier-features">
-                            <li>Unlimited platforms</li>
-                            <li>Complete digital audit</li>
-                            <li>Reputation management</li>
-                            <li>Ongoing monitoring (3 months)</li>
-                            <li>Priority phone support</li>
-                            <li>3-day completion</li>
-                            <li>Personal account manager</li>
-                            <li>Content strategy consultation</li>
-                        </ul>
-                    </div>
+                    <ul class="tier-features">
+                        <li>Remove up to 200 posts/photos</li>
+                        <li>Advanced privacy protection</li>
+                        <li>Professional profile makeover</li>
+                        <li>Detailed analytics report</li>
+                        <li>30-day follow-up support</li>
+                    </ul>
                 </div>
                 
-                <div class="step-navigation">
-                    <button class="nav-button secondary" onclick="prevStep('login-details')">Back</button>
-                    <button class="nav-button primary" id="service-next" onclick="nextStep('payment')" disabled>Continue to Payment</button>
+                <div class="tier-card" onclick="selectTier(this, 'premium', 349)">
+                    <div class="tier-header">
+                        <div class="tier-name">Premium</div>
+                        <div class="tier-price">$349</div>
+                    </div>
+                    <ul class="tier-features">
+                        <li>Unlimited post/photo removal</li>
+                        <li>Complete privacy overhaul</li>
+                        <li>Professional branding package</li>
+                        <li>Comprehensive analytics dashboard</li>
+                        <li>3 months ongoing monitoring</li>
+                        <li>Priority customer support</li>
+                    </ul>
+                </div>
+                
+                <div class="form-navigation">
+                    <button class="btn btn-secondary" onclick="showPage('login')">Back</button>
+                    <button class="btn" onclick="goToPayment()">Done</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- STEP 4: PAYMENT -->
+    <!-- Payment Page -->
     <div id="payment" class="page">
         <div class="container">
-            <div class="step-container">
-                <div class="step-header">
-                    <div class="step-number">4</div>
-                    <h2 class="step-title">Complete Your Order</h2>
-                    <p class="step-description">Review your order and complete payment</p>
+            <div class="form-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 100%"></div>
                 </div>
                 
-                <div class="payment-summary" id="payment-summary">
-                    <!-- Order summary will be populated here -->
+                <div class="form-header">
+                    <h2>Complete Your Order</h2>
+                    <p>Review your selection and complete payment</p>
                 </div>
                 
-                <div class="terms-section">
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="terms-checkbox" required>
-                        <label for="terms-checkbox">
-                            I agree to the <a href="#" onclick="showTerms()">Terms of Service</a> and <a href="#" onclick="showPrivacy()">Privacy Policy</a>. I understand that login credentials will be used solely for cleanup services and will be permanently deleted within 24 hours of completion.
-                        </label>
+                <div class="payment-summary">
+                    <h3 style="margin-bottom: 20px;">Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Selected Platforms:</span>
+                        <span id="selectedPlatformsSummary">-</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Service Tier:</span>
+                        <span id="selectedTierSummary">-</span>
+                    </div>
+                    <div class="summary-row summary-total">
+                        <span>Total:</span>
+                        <span id="totalPrice">$0</span>
                     </div>
                 </div>
                 
-                <div class="payment-methods">
-                    <div class="payment-method" data-method="stripe">
-                        <h3>💳 Credit Card</h3>
-                        <p>Secure payment via Stripe</p>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="your.email@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="John Doe" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Card Number</label>
+                    <input type="text" placeholder="1234 5678 9012 3456" required>
+                </div>
+                
+                <div style="display: flex; gap: 20px;">
+                    <div class="form-group" style="flex: 1;">
+                        <label>Expiry Date</label>
+                        <input type="text" placeholder="MM/YY" required>
                     </div>
-                    <div class="payment-method" data-method="paypal">
-                        <h3>🅿️ PayPal</h3>
-                        <p>Pay with PayPal account</p>
+                    <div class="form-group" style="flex: 1;">
+                        <label>CVV</label>
+                        <input type="text" placeholder="123" required>
                     </div>
                 </div>
                 
-                <div class="step-navigation">
-                    <button class="nav-button secondary" onclick="prevStep('service-selection')">Back</button>
-                    <button class="nav-button primary" id="complete-order" onclick="completeOrder()" disabled>Complete Order</button>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree to the <a href="#" style="color: #667eea;">Terms of Service</a> and <a href="#" style="color: #667eea;">Privacy Policy</a></label>
+                </div>
+                
+                <div class="form-navigation">
+                    <button class="btn btn-secondary" onclick="showPage('services')">Back</button>
+                    <button class="btn" onclick="processPayment()">Complete Payment</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 DigitalCleanPro. All rights reserved. | Professional Social Media Cleanup Services</p>
-            <p>Confidential • Secure • Professional</p>
-        </div>
-    </footer>
-
     <script>
-        // Global state
         let selectedPlatforms = [];
-        let loginCredentials = {};
         let selectedTier = null;
-        let selectedPaymentMethod = null;
+        let tierPrice = 0;
 
-        // Page navigation
         function showPage(pageId) {
+            // Hide all pages
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
+            
+            // Show selected page
             document.getElementById(pageId).classList.add('active');
         }
 
-        function startProcess() {
-            showPage('platform-selection');
-        }
-
-        function nextStep(pageId) {
-            showPage(pageId);
-            if (pageId === 'login-details') {
-                generateLoginForms();
-            }
-            if (pageId === 'payment') {
-                generatePaymentSummary();
-            }
-        }
-
-        function prevStep(pageId) {
-            showPage(pageId);
-        }
-
-        // Platform selection
-        document.addEventListener('DOMContentLoaded', function() {
-            const platformCards = document.querySelectorAll('.platform-card');
-            const platformNext = document.getElementById('platform-next');
+        function togglePlatform(card, platform) {
+            card.classList.toggle('selected');
             
-            platformCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    const platform = this.dataset.platform;
-                    
-                    if (this.classList.contains('selected')) {
-                        this.classList.remove('selected');
-                        selectedPlatforms = selectedPlatforms.filter(p => p !== platform);
-                    } else {
-                        this.classList.add('selected');
-                        selectedPlatforms.push(platform);
-                    }
-                    
-                    platformNext.disabled = selectedPlatforms.length === 0;
-                });
-            });
-        });
+            if (selectedPlatforms.includes(platform)) {
+                selectedPlatforms = selectedPlatforms.filter(p => p !== platform);
+            } else {
+                selectedPlatforms.push(platform);
+            }
+        }
 
-        // Login forms generation
+        function goToLogin() {
+            if (selectedPlatforms.length === 0) {
+                alert('Please select at least one platform to continue.');
+                return;
+            }
+            
+            generateLoginForms();
+            showPage('login');
+        }
+
         function generateLoginForms() {
-            const loginFormsContainer = document.getElementById('login-forms');
-            loginFormsContainer.innerHTML = '';
+            const loginForms = document.getElementById('loginForms');
+            loginForms.innerHTML = '';
             
             selectedPlatforms.forEach(platform => {
-                const formHtml = `
-                    <div class="login-form active">
-                        <h3>${platform.charAt(0).toUpperCase() + platform.slice(1)} Login</h3>
-                        <div class="form-group">
-                            <label for="${platform}-username">Username/Email</label>
-                            <input type="text" id="${platform}-username" name="${platform}-username" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="${platform}-password">Password</label>
-                            <input type="password" id="${platform}-password" name="${platform}-password" required>
-                        </div>
+                const platformName = platform.charAt(0).toUpperCase() + platform.slice(1);
+                const formHTML = `
+                    <div class="form-group">
+                        <label>${platformName} Username/Email</label>
+                        <input type="text" placeholder="Enter your ${platformName} username or email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>${platformName} Password</label>
+                        <input type="password" placeholder="Enter your ${platformName} password" required>
                     </div>
                 `;
-                loginFormsContainer.innerHTML += formHtml;
-            });
-            
-            // Add event listeners to validate forms
-            const inputs = loginFormsContainer.querySelectorAll('input');
-            const loginNext = document.getElementById('login-next');
-            
-            function validateLoginForms() {
-                let allFilled = true;
-                inputs.forEach(input => {
-                    if (!input.value.trim()) {
-                        allFilled = false;
-                    }
-                });
-                loginNext.disabled = !allFilled;
-            }
-            
-            inputs.forEach(input => {
-                input.addEventListener('input', validateLoginForms);
+                loginForms.innerHTML += formHTML;
             });
         }
 
-        // Service tier selection
-        document.addEventListener('DOMContentLoaded', function() {
-            const tierCards = document.querySelectorAll('.tier-card');
-            const serviceNext = document.getElementById('service-next');
+        function selectTier(card, tier, price) {
+            // Remove selection from all cards
+            document.querySelectorAll('.tier-card').forEach(c => {
+                c.classList.remove('selected');
+            });
             
-            tierCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    tierCards.forEach(c => c.classList.remove('selected'));
-                    this.classList.add('selected');
-                    selectedTier = this.dataset.tier;
-                    serviceNext
+            // Select clicked card
+            card.classList.add('selected');
+            selectedTier = tier;
+            tierPrice = price;
+        }
+
+        function goToPayment() {
+            if (!selectedTier) {
+                alert('Please select a service tier to continue.');
+                return;
+            }
+            
+            updatePaymentSummary();
+            showPage('payment');
+        }
+
+        function updatePaymentSummary() {
+            const platformsSummary = selectedPlatforms.map(p => 
+                p.charAt(0).toUpperCase() + p.slice(1)
+            ).join(', ');
+            
+            const tierName = selectedTier.charAt(0).toUpperCase() + selectedTier.slice(1);
+            
+            document.getElementById('selectedPlatformsSummary').textContent = platformsSummary;
+            document.getElementById('selectedTierSummary').textContent = tierName;
+            document.getElementById('totalPrice').textContent = `$${tierPrice}`;
+        }
+
+        function processPayment() {
+            const termsCheckbox = document.getElementById('terms');
+            if (!termsCheckbox.checked) {
+                alert('Please agree to the Terms of Service to continue.');
+                return;
+            }
+            
+            // Here you would integrate with a real payment processor
+            alert('Thank you! Your order has been submitted. You will receive a confirmation email shortly with next steps.');
+            
+            // Reset the form and go back to landing page
+            resetForm();
+            showPage('landing');
+        }
+
+        function resetForm() {
+            selectedPlatforms = [];
+            selectedTier = null;
+            tierPrice = 0;
+            
+            // Reset all form selections
+            document.querySelectorAll('.platform-card.selected').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            document.querySelectorAll('.tier-card.selected').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Reset form inputs
+            document.querySelectorAll('input').forEach(input => {
+                input.value = '';
+                input.checked = false;
+            });
+        }
+    </script>
+</body>
+</html>
